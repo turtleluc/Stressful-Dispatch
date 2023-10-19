@@ -4,50 +4,76 @@ using UnityEngine.Windows.Speech;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TMPro;
 
 public class VoiceHandeler : MonoBehaviour
 {
+    public string[] keywords = new string[] { "up", "down", "left", "right" };
+    public ConfidenceLevel confidence = ConfidenceLevel.Medium;
+    public float speed = 1;
 
-    private string[] keywords = new string[] { "test"};
-    private KeywordRecognizer keywordRecognizer;
+    public TMP_Text results;
+/*    public Image target;*/
 
+    protected PhraseRecognizer recognizer;
+    protected string word = "right";
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        keywordRecognizer = new KeywordRecognizer(keywords);
-        keywordRecognizer.OnPhraseRecognized += OnPhraseRecognized;
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (keywords != null)
         {
-            keywordRecognizer.Start();
-            Debug.Log("V in");
+            recognizer = new KeywordRecognizer(keywords, confidence);
+            recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
+            recognizer.Start();
+            Debug.Log(recognizer.IsRunning);
         }
 
-        if(Input.GetKeyUp(KeyCode.V))
+        foreach (var device in Microphone.devices)
         {
-            keywordRecognizer.Stop();
-           
-        }
-
-
-    }
-
-
-    private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
-    {
-        if (args.text == "test")
-        {
-            Debug.Log("test");
+            Debug.Log("Name: " + device);
         }
     }
 
+    private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    {
+        word = args.text;
+        results.text = "You said: <b>" + word + "</b>";
+
+        Debug.Log(word);
+    }
+
+    private void Update()
+    {
+/*        var x = target.transform.position.x;
+        var y = target.transform.position.y;
+
+        switch (word)
+        {
+            case "up":
+                y += speed;
+                break;
+            case "down":
+                y -= speed;
+                break;
+            case "left":
+                x -= speed;
+                break;
+            case "right":
+                x += speed;
+                break;
+        }
+
+        target.transform.position = new Vector3(x, y, 0);*/
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (recognizer != null && recognizer.IsRunning)
+        {
+            recognizer.OnPhraseRecognized -= Recognizer_OnPhraseRecognized;
+            recognizer.Stop();
+        }
+    }
 }
 
     
