@@ -25,7 +25,7 @@ public class VoiceHandeler : MonoBehaviour
             recognizer = new KeywordRecognizer(keywords, confidence);
             recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
             recognizer.Start();
-            Debug.Log(recognizer.IsRunning);
+            Debug.Log("Running = " + recognizer.IsRunning);
         }
 
         foreach (var device in Microphone.devices)
@@ -44,26 +44,25 @@ public class VoiceHandeler : MonoBehaviour
 
     private void Update()
     {
-/*        var x = target.transform.position.x;
-        var y = target.transform.position.y;
+        
 
         switch (word)
         {
             case "up":
-                y += speed;
+                Debug.Log("Plankie");
                 break;
             case "down":
-                y -= speed;
+       
                 break;
             case "left":
-                x -= speed;
+       
                 break;
             case "right":
-                x += speed;
+      
                 break;
         }
 
-        target.transform.position = new Vector3(x, y, 0);*/
+        
     }
 
     private void OnApplicationQuit()
