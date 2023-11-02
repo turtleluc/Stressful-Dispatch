@@ -16,6 +16,10 @@ public class Mission_Handler : MonoBehaviour
 
     List<Objective> objective = new List<Objective>();
 
+    List<Bolos> bolos = new List<Bolos>();
+
+    List<Warrents> warrents = new List<Warrents>();
+
     string unitInput;
 
     [SerializeField]
@@ -38,6 +42,8 @@ public class Mission_Handler : MonoBehaviour
     {
         PlaceAdd();
         MissionAdd();
+        BolosAdd();
+        WarrentsAdd();
     }
 
     // Update is called once per frame
@@ -53,6 +59,14 @@ public class Mission_Handler : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Tab))
         {
             Dispatch();
+        }
+        if (Input.GetKeyDown("w"))
+        {
+            PullWarrents();
+        }
+        if (Input.GetKeyDown("b"))
+        {
+            PullBolos();
         }
     }
 
@@ -109,6 +123,47 @@ public class Mission_Handler : MonoBehaviour
 
 
     }
+
+    void BolosAdd()
+    {
+        bolos.Add(new Bolos("Porsche 911 9-RTV-32"));
+        bolos.Add(new Bolos("Pontiac Trans AM 3-TNM-27"));
+        bolos.Add(new Bolos("Dodge Challenger 9-IYU-46"));
+        bolos.Add(new Bolos("Ford Pinto 7-VSD-75"));
+        bolos.Add(new Bolos("1979 Chevrolet Camaro Z28 4-BNS-62"));
+        bolos.Add(new Bolos("Mercedes 200/300 4-FOP-84"));
+        bolos.Add(new Bolos("1977 Ford Bronco 6-EFG-14"));
+        bolos.Add(new Bolos("Rover 2000 2-JWX-79"));
+        bolos.Add(new Bolos("NSU Ro80 5-KRS-91"));
+        bolos.Add(new Bolos("Citroën GS 1-ZBN-10"));
+        bolos.Add(new Bolos("Fiat 128 8-THS-19"));
+        bolos.Add(new Bolos("Mercedes 450S 9-LYD-92"));
+        bolos.Add(new Bolos("Lancia Delta 3-GMX-52"));
+
+    }
+
+    void WarrentsAdd()
+    {
+        warrents.Add(new Warrents("Bill Verkaap"));
+        warrents.Add(new Warrents("Margo Spaat"));
+        warrents.Add(new Warrents("Mohammed Scharrel"));
+        warrents.Add(new Warrents("Jasmijn van Rodermaan"));
+        warrents.Add(new Warrents("Browie Bramwie"));
+        warrents.Add(new Warrents("Silvie Rovan"));
+        warrents.Add(new Warrents("Sven Mooi"));
+        warrents.Add(new Warrents("Tanja Ploeger"));
+        warrents.Add(new Warrents("Johan de groot"));
+        warrents.Add(new Warrents("Veronique Bouchier"));
+        warrents.Add(new Warrents("Ronald van Duinen"));
+        warrents.Add(new Warrents("Zeno Schijf"));
+        warrents.Add(new Warrents("Ali Schipperen"));
+        warrents.Add(new Warrents("Jamil Putter"));
+        warrents.Add(new Warrents("Carlijn Versteegen"));
+        warrents.Add(new Warrents("Shakir van Helvoort"));
+        warrents.Add(new Warrents("Silke Kruijt"));
+        warrents.Add(new Warrents("Wouter Verlinde"));
+        warrents.Add(new Warrents("Janien Kilinç"));
+    }
  
 
 
@@ -133,6 +188,26 @@ public class Mission_Handler : MonoBehaviour
         else
         {
             Debug.Log("Error 420-69.");
+        }
+    }
+
+    void PullWarrents()
+    {
+        if(warrents.Count > 0)
+        {
+            int randomIndexP = Random.Range(0, warrents.Count);
+            Warrents randomWarrent = warrents[randomIndexP];
+            Debug.Log("Er is een Warrent op " + randomWarrent.ID + " Kan je die checken ");
+        }
+    }
+
+    void PullBolos()
+    {
+        if(bolos.Count > 0) 
+        { 
+            int randomIndexP = Random.Range(0, bolos.Count);
+            Bolos randomBolos = bolos[randomIndexP];
+            Debug.Log("Er is een Bolo op " + randomBolos.kenteken + " Kan je die checken ");
         }
     }
 
@@ -173,6 +248,27 @@ class Mission
         this.name = name;
         code = _code;
         unitmin = umin;
+    }
+}
+
+class Bolos 
+{
+    public string kenteken;
+    
+    public Bolos(string _kenteken)
+    {
+        this.kenteken = _kenteken;
+    }
+}
+
+class Warrents
+{
+    public string ID;
+
+
+    public Warrents(string ID)
+    {
+        this.ID = ID;
     }
 }
 
