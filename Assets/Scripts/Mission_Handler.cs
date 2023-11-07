@@ -22,6 +22,10 @@ public class Mission_Handler : MonoBehaviour
 
     string unitInput;
 
+    bool red;
+    bool green;
+    bool blue;
+
     [SerializeField]
     TMP_Text MissionText;
 
@@ -58,7 +62,7 @@ public class Mission_Handler : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Tab))
         {
-            Dispatch();
+            Zone();
         }
         if (Input.GetKeyDown("w"))
         {
@@ -211,9 +215,22 @@ public class Mission_Handler : MonoBehaviour
         }
     }
 
-    void Dispatch()
+    void Zone()
     {
-        /*Instantiate(MisstionPan, MisstionParr);*/
+        if(red == true)
+        {
+
+        }
+
+        if(green == true)
+        {
+
+        }
+
+        if(blue == true)
+        {
+
+        }
 
     }
 
