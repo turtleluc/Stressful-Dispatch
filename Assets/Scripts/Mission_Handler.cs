@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,10 +77,13 @@ public class Mission_Handler : MonoBehaviour
         if (Input.GetKeyDown("a"))
         {
             freq--;
+            Debug.Log(freq);
+
         }
         if (Input.GetKeyDown("d"))
         {
             freq++;
+            Debug.Log(freq);
         }
     }
 
