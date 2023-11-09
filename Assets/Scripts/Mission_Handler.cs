@@ -26,6 +26,8 @@ public class Mission_Handler : MonoBehaviour
     bool green;
     bool blue;
 
+    int freq;
+
     [SerializeField]
     TMP_Text MissionText;
 
@@ -71,6 +73,15 @@ public class Mission_Handler : MonoBehaviour
         if (Input.GetKeyDown("b"))
         {
             PullBolos();
+        }
+
+        if (Input.GetKeyDown("a"))
+        {
+            freq--;
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            freq++;
         }
     }
 
