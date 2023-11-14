@@ -27,6 +27,14 @@ public class Mission_Handler : MonoBehaviour
 
     int freq;
 
+    private Mission currentMission;
+
+    string Rood = "Rood";
+    string Groen = "Groen";
+    string Blauw = "Blauw";
+
+    string regioCode;
+
     [SerializeField]
     TMP_Text MissionText;
 
@@ -85,6 +93,8 @@ public class Mission_Handler : MonoBehaviour
             freq++;
             Debug.Log(freq);
         }
+
+        StateCheck();
     }
 
 
@@ -93,26 +103,26 @@ public class Mission_Handler : MonoBehaviour
     void PlaceAdd()
     {
 
-        places.Add(new Place("Balghakt", 169));
-        places.Add(new Place("Sponky Town", 185));
-        places.Add(new Place("Sulka Dust", 177));
-        places.Add(new Place("Jojan", 169));
-        places.Add(new Place("Vis Dorp", 177));
-        places.Add(new Place("BeenBurg", 185));
-        places.Add(new Place("Flores", 187));
-        places.Add(new Place("Abraham", 187));
-        places.Add(new Place("Silverschans", 187));
-        places.Add(new Place("Randes", 169));
-        places.Add(new Place("Glordes", 172));
-        places.Add(new Place("Taalf", 172));
-        places.Add(new Place("Pits", 172));
-        places.Add(new Place("Groo Dorp", 172));
-        places.Add(new Place("Glaareed", 165));
-        places.Add(new Place("Zoolf", 165));
-        places.Add(new Place("Waalm", 165));
-        places.Add(new Place("Klous", 157));
-        places.Add(new Place("Daander", 157));
-        places.Add(new Place("Maan Dorp", 157));
+        places.Add(new Place("Balghakt", 169, Rood));
+        places.Add(new Place("Sponky Town", 185, Groen));
+        places.Add(new Place("Sulka Dust", 177, Groen));
+        places.Add(new Place("Jojan", 169, Groen));
+        places.Add(new Place("Vis Dorp", 177, Groen));
+        places.Add(new Place("BeenBurg", 185, Groen));
+        places.Add(new Place("Flores", 187, Groen));
+        places.Add(new Place("Abraham", 187, Groen));
+        places.Add(new Place("Silverschans", 187, Rood));
+        places.Add(new Place("Randes", 169, Rood));
+        places.Add(new Place("Glordes", 172, Rood));
+        places.Add(new Place("Taalf", 172, Rood));
+        places.Add(new Place("Pits", 172, Rood));
+        places.Add(new Place("Groo Dorp", 172, Blauw));
+        places.Add(new Place("Glaareed", 165, Blauw));
+        places.Add(new Place("Zoolf", 165, Blauw));
+        places.Add(new Place("Waalm", 165, Blauw));
+        places.Add(new Place("Klous", 157, Blauw));
+        places.Add(new Place("Daander", 157, Rood));
+        places.Add(new Place("Maan Dorp", 157, Rood));
     }
 
     void MissionAdd()
@@ -180,50 +190,24 @@ public class Mission_Handler : MonoBehaviour
         warrents.Add(new Warrents("Silke Kruijt"));
         warrents.Add(new Warrents("Wouter Verlinde"));
         warrents.Add(new Warrents("Janien Kilinç"));
-        warrents.Add(new Warrents("Raplh Ison"));
-        warrents.Add(new Warrents("Amos Voll"));
-        warrents.Add(new Warrents("Jaimy de Boer"));
-        warrents.Add(new Warrents("Lasse Klok"));
-        warrents.Add(new Warrents("Daan Staal"));
-        warrents.Add(new Warrents("Robert van Dijk"));
-        warrents.Add(new Warrents("Edwin Pott"));
-        warrents.Add(new Warrents("Evelien de Jong"));
-        warrents.Add(new Warrents("Hugo Dekker"));
-        warrents.Add(new Warrents("Pepijn Peters"));
-        warrents.Add(new Warrents("Alfons van Ramshorst"));
-        warrents.Add(new Warrents("Corstiaan Baaijens"));
-        warrents.Add(new Warrents("Corstiaan Baaijens"));
-        warrents.Add(new Warrents("Zoe Takken"));
-        warrents.Add(new Warrents("Gert-Jan Luijsterburg"));
-        warrents.Add(new Warrents("Romy"));
-        warrents.Add(new Warrents("Leco Merkelbach"));
-        warrents.Add(new Warrents("Reijer Çoban"));
-        warrents.Add(new Warrents("Bert Macnack"));
-        warrents.Add(new Warrents("[REDACTED]"));
-        warrents.Add(new Warrents("Aiden Pearce"));
-        warrents.Add(new Warrents("John ten Velde"));
-        warrents.Add(new Warrents("Johannes Piet Adriaan"));
-        warrents.Add(new Warrents("Hanan Schutte"));
-        warrents.Add(new Warrents("Richard ter Huurne"));
-        warrents.Add(new Warrents("Maite van Seeters"));
-        warrents.Add(new Warrents("Heinrich Kruger"));
-        warrents.Add(new Warrents("Edo Petter"));
-        warrents.Add(new Warrents("Paul Braun"));
-        warrents.Add(new Warrents("Shinji Ikari"));
-        warrents.Add(new Warrents("Akio Okazaki"));
-        warrents.Add(new Warrents("Benio Tanikawa"));
-        warrents.Add(new Warrents("Wong Hsiung"));
-        warrents.Add(new Warrents("Giancarlo Palomino Lomeli"));
-        warrents.Add(new Warrents("Juven Cervantes Coronado"));
-        warrents.Add(new Warrents("Zlatko Novaković"));
-        warrents.Add(new Warrents("Yuri Abramovich"));
-        warrents.Add(new Warrents("Teresa Bykova"));
-        warrents.Add(new Warrents("March Biryukova"));
-        warrents.Add(new Warrents("Clio Toscano"));
-        warrents.Add(new Warrents("Venanzio Trevisani"));
-        warrents.Add(new Warrents("Arduino Fanucci"));
-        warrents.Add(new Warrents("Gino Russo"));
+    }
 
+    void StateCheck()
+    {
+        if (regioCode == Rood)
+        {
+            myScript.commandToSend = myScript.COMMAND + "R";
+        }
+
+        else if (regioCode == Blauw)
+        {
+            myScript.commandToSend = myScript.COMMAND + "B";
+        }
+
+        else if (regioCode == Groen)
+        {
+            myScript.commandToSend = myScript.COMMAND + "G";
+        }
     }
 
     void PullMission()
@@ -240,7 +224,8 @@ public class Mission_Handler : MonoBehaviour
             new Objective(randomMission, randomplace);
             objective.Add(new Objective(randomMission, randomplace));
             MissionText.text = "Er is een " + randomMission.code + " in " + randomplace.name;
-            
+
+            regioCode = randomplace.regio;
             //Instantiate(new Objective(randomMission, randomplace), MisstionParr);
         }
         else
@@ -288,6 +273,7 @@ public class Mission_Handler : MonoBehaviour
     void Zone()
     {
         Randomizer(Random.Range(0, 3));
+
         if(red == true)
         {
 
@@ -316,11 +302,13 @@ class Place
 {
     public string name;
     public int frequentie;
+    public string regio;
 
-    public Place(string name, int freq)
+    public Place(string name, int freq, string _regio)
     {
         this.name = name;
         frequentie = freq;
+        regio = _regio;
     }
 }
 
@@ -375,3 +363,4 @@ class Objective : MonoBehaviour
 
     }
 }
+

@@ -2257,6 +2257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1623343916}
     m_Modifications:
+    - target: {fileID: 314794787687258304, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
+      propertyPath: m_Name
+      value: Text (TMP)
+      objectReference: {fileID: 0}
     - target: {fileID: 314794787687258306, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
       propertyPath: m_overflowMode
       value: 4
@@ -2352,6 +2356,22 @@ PrefabInstance:
     - target: {fileID: 314794787934790889, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158830441637129094, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
+      propertyPath: m_Name
+      value: Text (TMP) (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721293572220676445, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
+      propertyPath: m_Name
+      value: Text (TMP) (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204309266170560439, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
+      propertyPath: m_Name
+      value: Text (TMP) (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118886205780704335, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
+      propertyPath: m_Name
+      value: Text (TMP) (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
