@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -58,7 +58,7 @@ public class Mission_Handler : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            PullMission();
+            //PullMission();
         }
 
         if (Input.GetKeyUp(KeyCode.Tab))
@@ -89,10 +89,10 @@ public class Mission_Handler : MonoBehaviour
 
 
     //Call places and missions to go in the list
-    
+
     void PlaceAdd()
     {
-        
+
         places.Add(new Place("Balghakt", 169));
         places.Add(new Place("Sponky Town", 185));
         places.Add(new Place("Sulka Dust", 177));
@@ -114,7 +114,7 @@ public class Mission_Handler : MonoBehaviour
         places.Add(new Place("Daander", 157));
         places.Add(new Place("Maan Dorp", 157));
     }
-   
+
     void MissionAdd()
     {
         missions.Add(new Mission("Bank Overval", "10-89", 1));
@@ -152,7 +152,7 @@ public class Mission_Handler : MonoBehaviour
         bolos.Add(new Bolos("1977 Ford Bronco 6-EFG-14"));
         bolos.Add(new Bolos("Rover 2000 2-JWX-79"));
         bolos.Add(new Bolos("NSU Ro80 5-KRS-91"));
-        bolos.Add(new Bolos("Citro�n GS 1-ZBN-10"));
+        bolos.Add(new Bolos("Citroën GS 1-ZBN-10"));
         bolos.Add(new Bolos("Fiat 128 8-THS-19"));
         bolos.Add(new Bolos("Mercedes 450S 9-LYD-92"));
         bolos.Add(new Bolos("Lancia Delta 3-GMX-52"));
@@ -179,11 +179,52 @@ public class Mission_Handler : MonoBehaviour
         warrents.Add(new Warrents("Shakir van Helvoort"));
         warrents.Add(new Warrents("Silke Kruijt"));
         warrents.Add(new Warrents("Wouter Verlinde"));
-        warrents.Add(new Warrents("Janien Kilin�"));
+        warrents.Add(new Warrents("Janien Kilinç"));
+        warrents.Add(new Warrents("Raplh Ison"));
+        warrents.Add(new Warrents("Amos Voll"));
+        warrents.Add(new Warrents("Jaimy de Boer"));
+        warrents.Add(new Warrents("Lasse Klok"));
+        warrents.Add(new Warrents("Daan Staal"));
+        warrents.Add(new Warrents("Robert van Dijk"));
+        warrents.Add(new Warrents("Edwin Pott"));
+        warrents.Add(new Warrents("Evelien de Jong"));
+        warrents.Add(new Warrents("Hugo Dekker"));
+        warrents.Add(new Warrents("Pepijn Peters"));
+        warrents.Add(new Warrents("Alfons van Ramshorst"));
+        warrents.Add(new Warrents("Corstiaan Baaijens"));
+        warrents.Add(new Warrents("Corstiaan Baaijens"));
+        warrents.Add(new Warrents("Zoe Takken"));
+        warrents.Add(new Warrents("Gert-Jan Luijsterburg"));
+        warrents.Add(new Warrents("Romy"));
+        warrents.Add(new Warrents("Leco Merkelbach"));
+        warrents.Add(new Warrents("Reijer Çoban"));
+        warrents.Add(new Warrents("Bert Macnack"));
+        warrents.Add(new Warrents("[REDACTED]"));
+        warrents.Add(new Warrents("Aiden Pearce"));
+        warrents.Add(new Warrents("John ten Velde"));
+        warrents.Add(new Warrents("Johannes Piet Adriaan"));
+        warrents.Add(new Warrents("Hanan Schutte"));
+        warrents.Add(new Warrents("Richard ter Huurne"));
+        warrents.Add(new Warrents("Maite van Seeters"));
+        warrents.Add(new Warrents("Heinrich Kruger"));
+        warrents.Add(new Warrents("Edo Petter"));
+        warrents.Add(new Warrents("Paul Braun"));
+        warrents.Add(new Warrents("Shinji Ikari"));
+        warrents.Add(new Warrents("Akio Okazaki"));
+        warrents.Add(new Warrents("Benio Tanikawa"));
+        warrents.Add(new Warrents("Wong Hsiung"));
+        warrents.Add(new Warrents("Giancarlo Palomino Lomeli"));
+        warrents.Add(new Warrents("Juven Cervantes Coronado"));
+        warrents.Add(new Warrents("Zlatko Novaković"));
+        warrents.Add(new Warrents("Yuri Abramovich"));
+        warrents.Add(new Warrents("Teresa Bykova"));
+        warrents.Add(new Warrents("March Biryukova"));
+        warrents.Add(new Warrents("Clio Toscano"));
+        warrents.Add(new Warrents("Venanzio Trevisani"));
+        warrents.Add(new Warrents("Arduino Fanucci"));
+        warrents.Add(new Warrents("Gino Russo"));
+
     }
- 
-
-
 
     void PullMission()
     {
@@ -194,13 +235,13 @@ public class Mission_Handler : MonoBehaviour
 
             int randomIndex = Random.Range(0, missions.Count);
             Mission randomMission = missions[randomIndex];
-            Debug.Log("Er is een " + randomMission.code + " in " + randomplace.name);
+            //Debug.Log("Er is een " + randomMission.code + " in " + randomplace.name);
 
-            /*new Objective(randomMission, randomplace);*/
-            /* objective.Add(new Objective(randomMission, randomplace));*/
-            /*MissionText.text = "Er is een " + randomMission.code + " in " + randomplace.name;*/
+            new Objective(randomMission, randomplace);
+            objective.Add(new Objective(randomMission, randomplace));
+            MissionText.text = "Er is een " + randomMission.code + " in " + randomplace.name;
             
-            /*Instantiate(new Objective(randomMission, randomplace), MisstionParr);*/
+            //Instantiate(new Objective(randomMission, randomplace), MisstionParr);
         }
         else
         {
@@ -214,7 +255,7 @@ public class Mission_Handler : MonoBehaviour
         {
             int randomIndexP = Random.Range(0, warrents.Count);
             Warrents randomWarrent = warrents[randomIndexP];
-            Debug.Log("Er is een Warrent op " + randomWarrent.ID + " Kan je die checken ");
+            MissionText.text = "Er is een Warrent op " + randomWarrent.ID + " Kan je die checken? ";
         }
     }
 
@@ -224,12 +265,29 @@ public class Mission_Handler : MonoBehaviour
         { 
             int randomIndexP = Random.Range(0, bolos.Count);
             Bolos randomBolos = bolos[randomIndexP];
-            Debug.Log("Er is een Bolo op " + randomBolos.kenteken + " Kan je die checken ");
+            MissionText.text = "Er is een Bolo op " + randomBolos.kenteken + " Kan je die checken? ";
+        }
+    }
+
+    void Randomizer(int x)
+    {
+        switch (x)
+        {
+            case 0:
+                PullMission();
+                break;
+            case 1:
+                PullWarrents();
+                break;
+            case 2:
+                PullBolos();
+                break;
         }
     }
 
     void Zone()
     {
+        Randomizer(Random.Range(0, 3));
         if(red == true)
         {
 

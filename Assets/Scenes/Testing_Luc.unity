@@ -2257,6 +2257,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1623343916}
     m_Modifications:
+    - target: {fileID: 314794787687258306, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
+      propertyPath: m_overflowMode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 314794787687258306, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 314794787934790886, guid: a7492ff635d85de4481a56a5c9530a9b, type: 3}
       propertyPath: m_Name
       value: Text
