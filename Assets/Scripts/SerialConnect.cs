@@ -62,7 +62,7 @@ public class SerialConnect : MonoBehaviour
 	public int timeout = 1000; // sets the serial timeout value before reporting error
 
 	public List<int> values = new List<int>(); // our list of received values
-	public string commandToSend = "";			// to send commands to the Arduino
+	public string commandToSend = "b";			// to send commands to the Arduino
 
 	//Setup parameters to connect to the serial port
 	private static SerialPort serial;
@@ -74,17 +74,14 @@ public class SerialConnect : MonoBehaviour
     public static List<string> comPorts = new List<string>();
     public static bool isPortActive = false;    // true = a comm port is opened
 
+
     void Start()
 	{
         // Open the selected serial port
-		//serial = new SerialPort(port, baudrate, Parity.None, 8, StopBits.One);
-		//OpenConnection();
-	}
+        serial = new SerialPort(port, baudrate, Parity.None, 8, StopBits.One);
+        OpenConnection();
 
-
-	void Update()
-	{
-        if (isPortActive)
+        /*if (isPortActive)
         {
             if (counter % n == 0)
             {
@@ -114,11 +111,64 @@ public class SerialConnect : MonoBehaviour
             counter++;
             //Debug.Log (values[0]);
 
+        }*/
+    }
+
+
+	void Update()
+	{
+        Light();
+
+            if (isPortActive)
+            {
+                if (counter % n == 0)
+                {
+                    if (commandToSend != "")
+                    {
+                        // send command to Arduino
+                        serial.Write(commandToSend);
+                        commandToSend = ""; // reset command to send
+                    }
+                    else
+                    {
+                        // signal that we want to receive values
+                        serial.Write(GIVE_INPUT);
+                        try
+                        {
+                            incoming = serial.ReadLine();
+                            ParseLine(incoming);
+                            portStatus = "Normal operation";
+                        }
+                        catch (TimeoutException e)
+                        {
+                            //print ("TimeoutException (try resetting connected device) " + e);
+                            portStatus = "TimeoutException (try resetting connected device) ";  // +e;
+                        }
+                    }
+                }
+                counter++;
+                //Debug.Log (values[0]);
+
+            }
         }
-	}
+
+    void Light()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+           commandToSend = COMMAND + "B";
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            commandToSend = COMMAND + "G";
+        }
+
+    }
 
 
-	void ParseLine(string strIn)
+
+void ParseLine(string strIn)
 	{
 		string[] svalues = strIn.Split(',');
 		List<int> list = new List<int>();
@@ -232,3 +282,4 @@ public class SerialConnect : MonoBehaviour
     }
 
 }
+    
