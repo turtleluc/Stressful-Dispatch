@@ -1434,6 +1434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1278431110}
   - component: {fileID: 1278431111}
+  - component: {fileID: 1278431112}
   m_Layer: 0
   m_Name: Dispatch
   m_TagString: Untagged
@@ -1469,11 +1470,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e9947bfeca1704f802634ebf567209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectWithSerialConnect: {fileID: 1278431109}
   MissionText: {fileID: 1493501551}
   MisstionParr: {fileID: 1623343916}
   UnitsIn: {fileID: 411812411}
   FreqIn: {fileID: 613268680}
   MisstionPan: {fileID: 185877319}
+--- !u!114 &1278431112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278431109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79484a52b7146154da6675f71376963f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  COMMAND: b
+  port: COM5
+  baudrate: 115200
+  n: 6
+  timeout: 1000
+  values: 
+  commandToSend: b
 --- !u!1 &1295320814
 GameObject:
   m_ObjectHideFlags: 0

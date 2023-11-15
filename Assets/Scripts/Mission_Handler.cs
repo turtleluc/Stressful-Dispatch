@@ -27,6 +27,8 @@ public class Mission_Handler : MonoBehaviour
 
     int freq;
 
+    private SerialConnect connect;
+
     private Mission currentMission;
 
     string Rood = "Rood";
@@ -34,6 +36,9 @@ public class Mission_Handler : MonoBehaviour
     string Blauw = "Blauw";
 
     string regioCode;
+
+    [SerializeField] 
+    GameObject objectWithSerialConnect;
 
     [SerializeField]
     TMP_Text MissionText;
@@ -57,6 +62,7 @@ public class Mission_Handler : MonoBehaviour
         MissionAdd();
         BolosAdd();
         WarrentsAdd();
+        connect = objectWithSerialConnect.GetComponent<SerialConnect>();
     }
 
     // Update is called once per frame
@@ -196,17 +202,17 @@ public class Mission_Handler : MonoBehaviour
     {
         if (regioCode == Rood)
         {
-            myScript.commandToSend = myScript.COMMAND + "R";
+            connect.commandToSend = connect.COMMAND + "R";
         }
 
         else if (regioCode == Blauw)
         {
-            myScript.commandToSend = myScript.COMMAND + "B";
+            connect.commandToSend = connect.COMMAND + "B";
         }
 
         else if (regioCode == Groen)
         {
-            myScript.commandToSend = myScript.COMMAND + "G";
+            connect.commandToSend = connect.COMMAND + "G";
         }
     }
 
