@@ -26,6 +26,7 @@ public class Mission_Handler : MonoBehaviour
     bool blue;
 
     int freq;
+    int freqi;
 
     private SerialConnect connect;
 
@@ -36,6 +37,7 @@ public class Mission_Handler : MonoBehaviour
     string Blauw = "Blauw";
 
     string regioCode;
+    int regioFreq;
 
     [SerializeField] 
     GameObject objectWithSerialConnect;
@@ -70,6 +72,8 @@ public class Mission_Handler : MonoBehaviour
     {
         unitInput = UnitsIn.text;
 
+        frequi();
+
         if (Input.GetKeyDown("space"))
         {
             //PullMission();
@@ -88,7 +92,7 @@ public class Mission_Handler : MonoBehaviour
             PullBolos();
         }
 
-        if (Input.GetKeyDown("a"))
+        /*if (Input.GetKeyDown("a"))
         {
             freq--;
             Debug.Log(freq);
@@ -98,7 +102,7 @@ public class Mission_Handler : MonoBehaviour
         {
             freq++;
             Debug.Log(freq);
-        }
+        }*/
 
         StateCheck();
     }
@@ -198,24 +202,55 @@ public class Mission_Handler : MonoBehaviour
         warrents.Add(new Warrents("Janien Kilinç"));
     }
 
+    void frequi()
+    {
+        if (Input.GetKeyDown(KeyCode.A)) {
+            freqi--;
+            Debug.Log(freqi);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            freqi++;
+            Debug.Log(freqi);
+        }
+
+        if (freqi >= 255 )
+        {
+            freqi = 255;
+        }
+
+        else if (freqi <= 0)
+        {
+            freqi = 0;
+        }
+
+        if (freqi == regioFreq)
+        {
+            Debug.Log("Connected");
+        }
+    }
+
     void StateCheck()
     {
         if (regioCode == Rood)
         {
             connect.commandToSend = connect.COMMAND + "R";
             connect.commandToSend = connect.COMMAND + "R";
+            return;
         }
 
         else if (regioCode == Blauw)
         {
             connect.commandToSend = connect.COMMAND + "B";
             connect.commandToSend = connect.COMMAND + "B";
+            return;
         }
 
         else if (regioCode == Groen)
         {
             connect.commandToSend = connect.COMMAND + "G";
             connect.commandToSend = connect.COMMAND + "G";
+            return;
         }
     }
 
@@ -235,6 +270,7 @@ public class Mission_Handler : MonoBehaviour
             MissionText.text = "Er is een " + randomMission.code + " in " + randomplace.name;
 
             regioCode = randomplace.regio;
+            regioFreq = randomplace.frequentie;
             //Instantiate(new Objective(randomMission, randomplace), MisstionParr);
         }
         else
