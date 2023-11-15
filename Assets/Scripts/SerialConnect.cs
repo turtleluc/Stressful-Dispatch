@@ -161,9 +161,13 @@ public class SerialConnect : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            commandToSend = COMMAND + "GDA";
+            commandToSend = COMMAND + "G";
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            commandToSend = COMMAND + "R";
+        }
     }
 
 

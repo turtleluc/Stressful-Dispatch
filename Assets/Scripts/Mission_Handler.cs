@@ -203,15 +203,18 @@ public class Mission_Handler : MonoBehaviour
         if (regioCode == Rood)
         {
             connect.commandToSend = connect.COMMAND + "R";
+            connect.commandToSend = connect.COMMAND + "R";
         }
 
         else if (regioCode == Blauw)
         {
             connect.commandToSend = connect.COMMAND + "B";
+            connect.commandToSend = connect.COMMAND + "B";
         }
 
         else if (regioCode == Groen)
         {
+            connect.commandToSend = connect.COMMAND + "G";
             connect.commandToSend = connect.COMMAND + "G";
         }
     }
